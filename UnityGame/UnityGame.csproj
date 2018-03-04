@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FCD907BF-7568-4ED4-99AD-78DC9D190058}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UnityGameToolkit</RootNamespace>
+    <AssemblyName>UnityGameToolkit</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\..\..\..\Program Files\Unity\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Animation\AnimateBase.cs" />
+    <Compile Include="Animation\Blink.cs" />
+    <Compile Include="Animation\Move.cs" />
+    <Compile Include="Animation\Rotation.cs" />
+    <Compile Include="Animation\SpriteAnimation.cs" />
+    <Compile Include="Asset\ResourceManager.cs" />
+    <Compile Include="Base\AppBase.cs" />
+    <Compile Include="Base\MultiManagerBase.cs" />
+    <Compile Include="Base\SingleManagerBase.cs" />
+    <Compile Include="Base\ManagerBase.cs" />
+    <Compile Include="Base\DisplayObject.cs" />
+    <Compile Include="Base\UScene.cs" />
+    <Compile Include="Cache\GameObjectPool.cs" />
+    <Compile Include="Cache\ObjectPool.cs" />
+    <Compile Include="Config\AppConf.cs" />
+    <Compile Include="Enum\Enum.cs" />
+    <Compile Include="Event\Event.cs" />
+    <Compile Include="Event\EventDispatcher.cs" />
+    <Compile Include="Event\Notification.cs" />
+    <Compile Include="Event\Notifier.cs" />
+    <Compile Include="Global\Global.cs" />
+    <Compile Include="Global\GlobalManager.cs" />
+    <Compile Include="Interface\IApp.cs" />
+    <Compile Include="Interface\IBindable.cs" />
+    <Compile Include="Event\IEventDispatcher.cs" />
+    <Compile Include="Manager\IManagement.cs" />
+    <Compile Include="Manager\IManager.cs" />
+    <Compile Include="Manager\NetworkManager.cs" />
+    <Compile Include="MVC\BasePanel.cs" />
+    <Compile Include="MVC\BaseWindow.cs" />
+    <Compile Include="MVC\Command.cs" />
+    <Compile Include="MVC\Mediator\BaseGUIMediator.cs" />
+    <Compile Include="MVC\Mediator\BaseMediator.cs" />
+    <Compile Include="NetStream\ByteBuffer.cs" />
+    <Compile Include="NetStream\Converter.cs" />
+    <Compile Include="NetStream\Protocal.cs" />
+    <Compile Include="NetStream\SocketClient.cs" />
+    <Compile Include="Object\IDisplayObject.cs" />
+    <Compile Include="MVC\IObserver.cs" />
+    <Compile Include="Interface\IRecyclable.cs" />
+    <Compile Include="Interface\IScene.cs" />
+    <Compile Include="Log\ULog.cs" />
+    <Compile Include="Manager\TimerManger.cs" />
+    <Compile Include="Object\UObject.cs" />
+    <Compile Include="Manager\SoundManager.cs" />
+    <Compile Include="Update\NotiConst.cs" />
+    <Compile Include="Update\ThreadManager.cs" />
+    <Compile Include="Utils\AndroidDeviceSettings.cs" />
+    <Compile Include="Utils\EncryptUtil.cs" />
+    <Compile Include="Utils\EnumUtils.cs" />
+    <Compile Include="Utils\FileUtil.cs" />
+    <Compile Include="Utils\FlexString.cs" />
+    <Compile Include="Utils\MathUtil.cs" />
+    <Compile Include="Utils\NetWorkUtil.cs" />
+    <Compile Include="Utils\PathUtil.cs" />
+    <Compile Include="Utils\StringUtil.cs" />
+    <Compile Include="Utils\TimeUtil.cs" />
+    <Compile Include="Utils\TransformUtil.cs" />
+    <Compile Include="Plugin\IPlugin.cs" />
+    <Compile Include="Plugin\IPluginOwner.cs" />
+    <Compile Include="Update\UpdateManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wnd\WndManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MVC\Controller\" />
+    <Folder Include="MVC\Model\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
