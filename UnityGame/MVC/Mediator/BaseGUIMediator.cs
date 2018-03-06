@@ -16,7 +16,7 @@ namespace UnityGameToolkit
         public int wndWidth = 0;        //窗体尺寸
         public int wndHeight = 0;
         public bool top = false;            //在当前层的最上面
-        public WNDLayerSort layerIndex = WNDLayerSort.BASE; // 处在的层级
+        //public WNDLayerSort layerIndex = WNDLayerSort.BASE; // 处在的层级
         public bool unique = false;     //是否独占(如果独占，则打开当前界面，当前层上的其它界面会被关闭)
         public bool uniqueAllLayer = false; //是否在所有层独占(如果独占，则打开当前界面，所有层上的其它界面会被关闭)
         public string uiPath = "";          //ui路径
@@ -107,7 +107,7 @@ namespace UnityGameToolkit
             if (view == null)
             {
                 BasePanel gp = panel.GetComponent<BasePanel>();
-                gp[BasePanel.GUILOADED] += new EventDispatch.EventHandler(LoadUIDown);
+                //gp[BasePanel.GUILOADED] += new EventDispatch.EventHandler(LoadUIDown);
                 gp.CreateUI(wndName, uiPath);
             }
             else
@@ -134,7 +134,7 @@ namespace UnityGameToolkit
 
             BasePanel gp = panel.GetComponent<BasePanel>();
 
-            gp[BasePanel.GUILOADED] -= new EventDispatcher.EventHandle(LoadUIDown);
+            //gp[BasePanel.GUILOADED] -= new EventDispatcher.EventHandle(LoadUIDown);
 
             if (evt.ContainsKey("obj"))
             {

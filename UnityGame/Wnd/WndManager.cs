@@ -126,7 +126,7 @@ namespace UnityGameToolkit
                     sortList.Add(bm);
                 }
 
-                sortList.Sort(CompareFunc);
+                //sortList.Sort(CompareFunc);
 
                 foreach (BaseGUIMediator bm in sortList)
                 {
@@ -342,7 +342,7 @@ namespace UnityGameToolkit
             CloseWindow(strFirst, true);
         }
 
-        public static int CompareFunc(BaseGUIMediator a, BaseGUIMediator b)
+        /*public static int CompareFunc(BaseGUIMediator a, BaseGUIMediator b)
         {
             if ((int)a.layerIndex > (int)b.layerIndex)
                 return 1;
@@ -357,7 +357,7 @@ namespace UnityGameToolkit
                 else
                     return 0;
             }
-        }
+        }*/
     }
 }
 

@@ -59,7 +59,7 @@ namespace UnityGameToolkit
         public int HandleNotification(Notification notification)
         {
             if (notification.Target != null &&
-               notification.Target != "" &&
+               notification.Target != null &&
                !notification.Target.Equals(NAME))
             {
                 return 0;

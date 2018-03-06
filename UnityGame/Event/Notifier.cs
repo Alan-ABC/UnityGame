@@ -18,12 +18,12 @@ namespace UnityGameToolkit
 
         public static void AddObserver(IObserver obs)
         {
-            if (_regsMap.ContainsKey(obs.ObsName))
+            if (_regsMap.ContainsKey(obs.ObserverName))
             {
                 return;
             }
 
-            _regsMap[obs.ObsName] = obs;
+            _regsMap[obs.ObserverName] = obs;
 
             IList<string> interests = obs.ListNotificationInterests();
 
@@ -40,12 +40,12 @@ namespace UnityGameToolkit
 
         public static void RemoveObserver(IObserver obs)
         {
-            if (!_regsMap.ContainsKey(obs.ObsName))
+            if (!_regsMap.ContainsKey(obs.ObserverName))
             {
                 return;
             }
 
-            _regsMap.Remove(obs.ObsName);
+            _regsMap.Remove(obs.ObserverName);
 
             IList<string> interests = obs.ListNotificationInterests();
 
@@ -105,7 +105,7 @@ namespace UnityGameToolkit
 
                         foreach (IObserver obs in obslist)
                         {
-                            if (obs.ObsName == target)
+                            if (obs.ObserverName == target)
                             {
                                 if (obs.HandleNotification(notification) == -1)
                                 {

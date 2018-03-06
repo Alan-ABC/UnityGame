@@ -74,8 +74,9 @@ namespace UnityGameToolkit
         /// <summary>
         /// Îö¹¹º¯Êý
         /// </summary>
-        new void OnDestroy()
+        public override void Destroy()
         {
+            base.Destroy();
             SocketClient.OnRemove();
             Debug.Log("~NetworkManager was destroy");
         }

@@ -1,0 +1,9 @@
+D:\UnityGame\UnityGame\UnityGame\obj\Debug\UnityGame.csprojResolveAssemblyReference.cache
+D:\UnityGame\UnityGame\UnityGame\bin\Debug\UnityGameToolkit.dll
+D:\UnityGame\UnityGame\UnityGame\bin\Debug\UnityGameToolkit.pdb
+D:\UnityGame\UnityGame\UnityGame\bin\Debug\UnityEngine.dll
+D:\UnityGame\UnityGame\UnityGame\bin\Debug\UnityEngine.UI.dll
+D:\UnityGame\UnityGame\UnityGame\bin\Debug\UnityEngine.xml
+D:\UnityGame\UnityGame\UnityGame\bin\Debug\UnityEngine.UI.xml
+D:\UnityGame\UnityGame\UnityGame\obj\Debug\UnityGameToolkit.dll
+D:\UnityGame\UnityGame\UnityGame\obj\Debug\UnityGameToolkit.pdb

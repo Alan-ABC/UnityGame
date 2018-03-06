@@ -3,8 +3,22 @@ using System.Collections;
 
 namespace UnityGameToolkit
 {
+    
     public static class StringUtil
     {
+        private static System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        public static string StringBuilder(params object[] args)
+        {
+            sb.Remove(0, sb.Length);
+
+            for (int i = 0; i < args.Length; ++i)
+            {
+                sb.Append(args[i]);
+            }
+
+            return sb.ToString();
+        }
+
         private static string[] chineseNumber = new string[]
         {
             "〇",

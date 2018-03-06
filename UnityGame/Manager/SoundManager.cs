@@ -6,12 +6,12 @@ namespace UnityGameToolkit
 {
     public class SoundManager : SingleManagerBase
     {
-        private AudioSource audio;
+        private AudioSource mAudio;
         private Hashtable sounds = new Hashtable();
 
         void Start()
         {
-            audio = GetComponent<AudioSource>();
+            mAudio = GetComponent<AudioSource>();
         }
 
         /// <summary>
@@ -64,14 +64,14 @@ namespace UnityGameToolkit
         /// <param name="canPlay"></param>
         public void PlayBacksound(string name, bool canPlay)
         {
-            if (audio.clip != null)
+            if (mAudio.clip != null)
             {
-                if (name.IndexOf(audio.clip.name) > -1)
+                if (name.IndexOf(mAudio.clip.name) > -1)
                 {
                     if (!canPlay)
                     {
-                        audio.Stop();
-                        audio.clip = null;
+                        mAudio.Stop();
+                        mAudio.clip = null;
                         Resources.UnloadUnusedAssets();
                     }
                     return;
@@ -80,14 +80,14 @@ namespace UnityGameToolkit
 
             if (canPlay)
             {
-                audio.loop = true;
-                audio.clip = LoadAudioClip(name);
-                audio.Play();
+                mAudio.loop = true;
+                mAudio.clip = LoadAudioClip(name);
+                mAudio.Play();
             }
             else
             {
-                audio.Stop();
-                audio.clip = null;
+                mAudio.Stop();
+                mAudio.clip = null;
                 Resources.UnloadUnusedAssets();
             }
         }
