@@ -57,6 +57,9 @@
     <Compile Include="Base\UScene.cs" />
     <Compile Include="Cache\GameObjectPool.cs" />
     <Compile Include="Cache\ObjectPool.cs" />
+    <Compile Include="Components\AnimComponent.cs" />
+    <Compile Include="Components\BuffComponent.cs" />
+    <Compile Include="Components\MoveComponent.cs" />
     <Compile Include="Config\AppConf.cs" />
     <Compile Include="Enum\Enum.cs" />
     <Compile Include="Event\Event.cs" />
@@ -68,6 +71,7 @@
     <Compile Include="Interface\IApp.cs" />
     <Compile Include="Interface\IBindable.cs" />
     <Compile Include="Event\IEventDispatcher.cs" />
+    <Compile Include="Interface\IComponent.cs" />
     <Compile Include="Manager\ArchiveManager.cs" />
     <Compile Include="Manager\IManagement.cs" />
     <Compile Include="Manager\IManager.cs" />
@@ -87,6 +91,7 @@
     <Compile Include="Interface\IScene.cs" />
     <Compile Include="Log\ULog.cs" />
     <Compile Include="Manager\TimerManger.cs" />
+    <Compile Include="Object\SmartObject.cs" />
     <Compile Include="Object\UObject.cs" />
     <Compile Include="Manager\SoundManager.cs" />
     <Compile Include="Update\NotiConst.cs" />
