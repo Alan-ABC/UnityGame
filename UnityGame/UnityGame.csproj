@@ -77,23 +77,23 @@
     <Compile Include="Manager\IManagement.cs" />
     <Compile Include="Manager\IManager.cs" />
     <Compile Include="Manager\NetworkManager.cs" />
-    <Compile Include="MVC\BasePanel.cs" />
-    <Compile Include="MVC\BaseWindow.cs" />
-    <Compile Include="MVC\Command.cs" />
-    <Compile Include="MVC\DataProvider.cs" />
-    <Compile Include="MVC\LuaAdapter.cs" />
-    <Compile Include="MVC\Mediator\BaseGUIMediator.cs" />
-    <Compile Include="MVC\Mediator\BaseMediator.cs" />
+    <Compile Include="UI\BasePanel.cs" />
+    <Compile Include="UI\BaseWindow.cs" />
+    <Compile Include="UI\Command.cs" />
+    <Compile Include="UI\DataProvider.cs" />
+    <Compile Include="UI\LuaAdapter.cs" />
+    <Compile Include="UI\Mediator\BaseGUIMediator.cs" />
+    <Compile Include="UI\Mediator\BaseMediator.cs" />
     <Compile Include="Manager\UIModuleManager.cs" />
-    <Compile Include="MVC\UIModule.cs" />
-    <Compile Include="MVC\UIContainer.cs" />
+    <Compile Include="UI\UIModule.cs" />
+    <Compile Include="UI\UIContainer.cs" />
     <Compile Include="Manager\UIPlayEffectManager.cs" />
     <Compile Include="NetStream\ByteBuffer.cs" />
     <Compile Include="NetStream\Converter.cs" />
     <Compile Include="NetStream\Protocal.cs" />
     <Compile Include="NetStream\SocketClient.cs" />
     <Compile Include="Object\IDisplayObject.cs" />
-    <Compile Include="MVC\IObserver.cs" />
+    <Compile Include="UI\IObserver.cs" />
     <Compile Include="Interface\IRecyclable.cs" />
     <Compile Include="Interface\IScene.cs" />
     <Compile Include="Log\ULog.cs" />
@@ -120,10 +120,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wnd\WndManager.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MVC\Controller\" />
-    <Folder Include="MVC\Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
