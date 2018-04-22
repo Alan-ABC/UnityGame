@@ -166,6 +166,13 @@ namespace UnityGameToolkit
                 GameObject.Destroy(go.GetChild(i).gameObject);
             }
         }
+
+        public static void ResetTransform(Transform tf)
+        {
+            tf.localPosition = Vector3.zero;
+            tf.localRotation = Quaternion.identity;
+            tf.localScale = Vector3.one;
+        }
     }
 }
 
