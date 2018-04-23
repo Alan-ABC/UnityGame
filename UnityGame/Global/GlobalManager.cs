@@ -6,8 +6,8 @@ namespace UnityGameToolkit
 {
     internal sealed class GlobalManager : ManagerBase, IBindable
     {
-        private Dictionary<string, IManager> _managerMap = new Dictionary<string, IManager>();
-        private uint _uniqueCount = 0;
+        private Dictionary<string, IManager> mMangersDic = new Dictionary<string, IManager>();
+        private uint mUniqueCount = 0;
 
         public struct ManagerInfo
         {
@@ -30,9 +30,9 @@ namespace UnityGameToolkit
 
         public string Register(string uniqueName, IManager mgr)
         {
-            if (_managerMap.ContainsKey(uniqueName))
+            if (mMangersDic.ContainsKey(uniqueName))
             {
-                uniqueName = uniqueName + "_" + _uniqueCount++;
+                uniqueName = uniqueName + "_" + mUniqueCount++;
             }
 
             if (mgr == null)
@@ -41,7 +41,7 @@ namespace UnityGameToolkit
                 return "null";
             }
 
-            _managerMap[uniqueName] = mgr;
+            mMangersDic[uniqueName] = mgr;
             mgr.Create();
 
             return uniqueName;
@@ -49,25 +49,25 @@ namespace UnityGameToolkit
 
         public void UnRegister(string uniqueName, bool bStop = true, bool bDestroy = true)
         {
-            if (_managerMap.ContainsKey(uniqueName))
+            if (mMangersDic.ContainsKey(uniqueName))
             {
                 if (bStop)
                 {
-                    _managerMap[uniqueName].Stop();
+                    mMangersDic[uniqueName].Stop();
                 }
 
                 if (bDestroy)
                 {
-                    _managerMap[uniqueName].DestroyDirectly();
+                    mMangersDic[uniqueName].DestroyDirectly();
                 }
             }
         }
 
         public IManager GetMGR(string uniqueName)
         {
-            if (_managerMap.ContainsKey(uniqueName))
+            if (mMangersDic.ContainsKey(uniqueName))
             {
-                return _managerMap[uniqueName];
+                return mMangersDic[uniqueName];
             }
 
             return null;
@@ -77,15 +77,15 @@ namespace UnityGameToolkit
         public override void Create()
         {
             base.Create();
-            _managerMap.Clear();
-            _uniqueCount = 0;
+            mMangersDic.Clear();
+            mUniqueCount = 0;
         }
 
         public override void Start()
         {
             base.Start();
 
-            foreach (KeyValuePair<string, IManager> kv in _managerMap)
+            foreach (KeyValuePair<string, IManager> kv in mMangersDic)
             {
                 kv.Value.Start();
             }
@@ -95,7 +95,7 @@ namespace UnityGameToolkit
         {
             base.Stop();
 
-            foreach (KeyValuePair<string, IManager> kv in _managerMap)
+            foreach (KeyValuePair<string, IManager> kv in mMangersDic)
             {
                 kv.Value.Stop();
             }
@@ -108,12 +108,12 @@ namespace UnityGameToolkit
 
         public override void Update()
         {
-            if (_managerMap.Count == 0)
+            if (mMangersDic.Count == 0)
             {
                 return;
             }
 
-            foreach (KeyValuePair<string, IManager> kv in _managerMap)
+            foreach (KeyValuePair<string, IManager> kv in mMangersDic)
             {
                 if (kv.Value.Status == ServerStatus.SS_RUNNING)
                     kv.Value.Update();
@@ -124,7 +124,7 @@ namespace UnityGameToolkit
         {
             base.Destroy();
 
-            foreach (KeyValuePair<string, IManager> keyvalue in _managerMap)
+            foreach (KeyValuePair<string, IManager> keyvalue in mMangersDic)
             {
 
                 if (keyvalue.Value.Status != ServerStatus.SS_DESTROY)
@@ -139,8 +139,8 @@ namespace UnityGameToolkit
                 
             }
 
-            _managerMap.Clear();
-            _uniqueCount = 0;
+            mMangersDic.Clear();
+            mUniqueCount = 0;
         }
 
         

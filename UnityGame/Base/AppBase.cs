@@ -5,12 +5,12 @@ namespace UnityGameToolkit
 {
     public class AppBase : MonoBehaviour, IApp, IBindable
     {
-        private GlobalManager _global;
+        private GlobalManager mGlobal;
 
         public virtual int Initialize()
         {
-            _global = new GlobalManager();
-            _global.Create();
+            mGlobal = new GlobalManager();
+            mGlobal.Create();
 
             return 1;
         }
@@ -22,49 +22,49 @@ namespace UnityGameToolkit
 
         public virtual int Start()
         {
-            _global.Start();
+            mGlobal.Start();
 
             return 1;
         }
 
         private void Update()
         {
-            _global.Update();
+            mGlobal.Update();
         }
 
         public virtual void Stop()
         {
-            _global.Stop();
+            mGlobal.Stop();
         }
 
         public virtual void Pause()
         {
-            _global.Stop();
+            mGlobal.Stop();
         }
 
         public virtual void Resume()
         {
-            _global.Start();
+            mGlobal.Start();
         }
 
         public virtual void Destroy()
         {
-            _global.DestroyDirectly();
+            mGlobal.DestroyDirectly();
         }
 
         public string Register(string uniqueName, IManager mgr)
         {
-            return _global.Register(uniqueName, mgr);
+            return mGlobal.Register(uniqueName, mgr);
         }
 
         public void UnRegister(string uniqueName, bool bStop = true, bool bDestroy = true)
         {
-            _global.UnRegister(uniqueName, bStop, bDestroy);
+            mGlobal.UnRegister(uniqueName, bStop, bDestroy);
         }
 
         public IManager GetMGR(string uniqueName)
         {
-            return _global.GetMGR(uniqueName);
+            return mGlobal.GetMGR(uniqueName);
         }
     }
 }

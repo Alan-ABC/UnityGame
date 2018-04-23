@@ -42,5 +42,4 @@ public enum UIStatus
     UI_NONE, // 无
     UI_SHOW, // 显示中
     UI_HIDE, // 隐藏
-    UI_POS_HIDE, // 位置隐藏
 }

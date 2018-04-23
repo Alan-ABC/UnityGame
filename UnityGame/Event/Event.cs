@@ -5,26 +5,26 @@ namespace UnityGameToolkit
 {
     public class Event
     {
-        private string _type = null;
-        private object _data = null;
-        private object _target = null;
+        private string mType = null;
+        private object mData = null;
+        private object mTarget = null;
 
         public string Type
         {
-            get { return _type; }
-            set { _type = value; }
+            get { return mType; }
+            set { mType = value; }
         }
 
         public object Data
         {
-            get { return _data; }
-            set { _data = value; }
+            get { return mData; }
+            set { mData = value; }
         }
 
         public object Target
         {
-            get { return _target; }
-            set { _target = value; }
+            get { return mTarget; }
+            set { mTarget = value; }
         }
 
         public Event(string type)

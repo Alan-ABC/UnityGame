@@ -101,8 +101,8 @@
     <Compile Include="Object\SmartObject.cs" />
     <Compile Include="Object\UObject.cs" />
     <Compile Include="Manager\SoundManager.cs" />
-    <Compile Include="Update\NotiConst.cs" />
-    <Compile Include="Update\ThreadManager.cs" />
+    <Compile Include="Updater\NotiConst.cs" />
+    <Compile Include="Updater\ThreadManager.cs" />
     <Compile Include="Utils\AndroidDeviceSettings.cs" />
     <Compile Include="Utils\EncryptUtil.cs" />
     <Compile Include="Utils\EnumUtils.cs" />
@@ -116,11 +116,13 @@
     <Compile Include="Utils\TransformUtil.cs" />
     <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Plugin\IPluginOwner.cs" />
-    <Compile Include="Update\UpdateManager.cs" />
+    <Compile Include="Updater\UpdateManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wnd\WndManager.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Camera\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
