@@ -9,7 +9,7 @@ namespace UnityGameToolkit
     {
         public delegate void EventHandle(Event evt);
 
-        private Dictionary<string, EventHandle> _handlesMap = new Dictionary<string, EventHandle>();
+        private Dictionary<string, EventHandle> mCallFuncHandleDic = new Dictionary<string, EventHandle>();
 
         private void UnknowHandle(Event evt)
         {
@@ -20,46 +20,46 @@ namespace UnityGameToolkit
         {
             get
             {
-                if (_handlesMap.ContainsKey(type))
+                if (mCallFuncHandleDic.ContainsKey(type))
                 {
-                    return _handlesMap[type];
+                    return mCallFuncHandleDic[type];
                 }
 
                 return new EventHandle(UnknowHandle);
             }
             set
             {
-                _handlesMap[type] = value;
+                mCallFuncHandleDic[type] = value;
             }
         }
 
         public void DispatchEvent(Event evt)
         {
-            if (_handlesMap.ContainsKey(evt.Type))
+            if (mCallFuncHandleDic.ContainsKey(evt.Type))
             {
-                _handlesMap[evt.Type].Invoke(evt);
+                mCallFuncHandleDic[evt.Type].Invoke(evt);
             }
         }
 
         public void AddEventListener(string type, EventHandle handle)
         {
-            if (!_handlesMap.ContainsKey(type))
+            if (!mCallFuncHandleDic.ContainsKey(type))
             {
-                _handlesMap[type] = handle;
+                mCallFuncHandleDic[type] = handle;
             }
         }
 
         public void RemoveEventListener(string type)
         {
-            if (_handlesMap.ContainsKey(type))
+            if (mCallFuncHandleDic.ContainsKey(type))
             {
-                _handlesMap.Remove(type);
+                mCallFuncHandleDic.Remove(type);
             }
         }
 
         public void Clear()
         {
-            _handlesMap.Clear();
+            mCallFuncHandleDic.Clear();
         }
     }
 

@@ -64,7 +64,6 @@
     <Compile Include="Enum\Enum.cs" />
     <Compile Include="Event\Event.cs" />
     <Compile Include="Event\EventDispatcher.cs" />
-    <Compile Include="Event\Notification.cs" />
     <Compile Include="Event\Notifier.cs" />
     <Compile Include="Global\Global.cs" />
     <Compile Include="Global\GlobalManager.cs" />

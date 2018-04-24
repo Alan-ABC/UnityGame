@@ -3,133 +3,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityGameToolkit;
 
+public delegate void CallFuncHandle(object data);
+
 namespace UnityGameToolkit
 {
     public static class Notifier
     {
-        private static Dictionary<string, IList<IObserver>> _observersMap = new Dictionary<string, IList<IObserver>>();
-        private static Dictionary<string, IObserver> _regsMap = new Dictionary<string, IObserver>();
+        private static Dictionary<string, List<CallFuncHandle>> mCallFuncDic = new Dictionary<string, List<CallFuncHandle>>();
 
         public static void Clear()
         {
-            _observersMap.Clear();
-            _regsMap.Clear();
+            mCallFuncDic.Clear();
         }
 
-        public static void AddObserver(IObserver obs)
+        public static void AddEventListener(string msgName, CallFuncHandle callFunc)
         {
-            if (_regsMap.ContainsKey(obs.ObserverName))
+            if (mCallFuncDic.ContainsKey(msgName))
+            {
+                if (mCallFuncDic[msgName].Contains(callFunc))
+                {
+                    return;
+                }
+                else
+                {
+                    mCallFuncDic[msgName].Add(callFunc);
+                }
+            }
+            else
+            {
+                mCallFuncDic[msgName] = new List<CallFuncHandle>()
+                {
+                    callFunc
+                };
+            }
+        }
+
+        public static void RemoveEventListener(string msgName, CallFuncHandle callFunc)
+        {
+            if (!mCallFuncDic.ContainsKey(msgName))
             {
                 return;
             }
 
-            _regsMap[obs.ObserverName] = obs;
-
-            IList<string> interests = obs.ListNotificationInterests();
-
-            foreach (string interest in interests)
+            if (mCallFuncDic[msgName].Contains(callFunc))
             {
-                if (!_observersMap.ContainsKey(interest))
-                {
-                    _observersMap[interest] = new List<IObserver>();
-                }
-
-                _observersMap[interest].Add(obs);
+                mCallFuncDic[msgName].Remove(callFunc);
             }
         }
 
-        public static void RemoveObserver(IObserver obs)
+        public static void Notification(string msgName, object data)
         {
-            if (!_regsMap.ContainsKey(obs.ObserverName))
+            List<CallFuncHandle> callFuncs = null;
+
+            if (mCallFuncDic.TryGetValue(msgName, out callFuncs))
             {
-                return;
-            }
-
-            _regsMap.Remove(obs.ObserverName);
-
-            IList<string> interests = obs.ListNotificationInterests();
-
-            foreach (string interest in interests)
-            {
-                if (_observersMap.ContainsKey(interest))
+                if (callFuncs.Count > 0)
                 {
-                    IList<IObserver> obslist = _observersMap[interest];
-
-                    foreach (IObserver ob in obslist)
+                    foreach (CallFuncHandle func in callFuncs)
                     {
-                        if (ob.Equals(obs))
-                        {
-                            obslist.Remove(ob);
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        public static IObserver RetrieveObserver(string obsName)
-        {
-            IObserver obs = null;
-
-            _regsMap.TryGetValue(obsName, out obs);
-
-            return obs;
-        }
-
-        public static void SendNotification(string type)
-        {
-            SendNotification(new Notification(type));
-        }
-
-        public static void SendNotification(string type, object data)
-        {
-            SendNotification(new Notification(type, data));
-        }
-
-        public static void SendNotification(string type, object data, object target)
-        {
-            SendNotification(new Notification(type, data, target));
-        }
-
-        public static void SendNotification(Notification notification)
-        {
-            IList<IObserver> obslist = null;
-
-            if (_observersMap.TryGetValue(notification.Type, out obslist))
-            {
-                if (obslist != null && obslist.Count > 0)
-                {
-                    if (notification.Target != null)
-                    {
-                        string target = notification.Target as string;
-
-                        foreach (IObserver obs in obslist)
-                        {
-                            if (obs.ObserverName == target)
-                            {
-                                if (obs.HandleNotification(notification) == -1)
-                                {
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        foreach (IObserver obs in obslist)
-                        {
-                            if (obs.HandleNotification(notification) == -1)
-                            {
-                                break;
-                            }
-                        }
+                        func.Invoke(data);
                     }
                 }
             }
 
-            
         }
-
     }
 
 }
