@@ -49,6 +49,8 @@
     <Compile Include="Animation\Rotation.cs" />
     <Compile Include="Animation\SpriteAnimation.cs" />
     <Compile Include="Asset\ResourceManager.cs" />
+    <Compile Include="Async\AsyncLoadSpriteManager.cs" />
+    <Compile Include="Async\AsyncOperator.cs" />
     <Compile Include="Base\AppBase.cs" />
     <Compile Include="Base\MultiManagerBase.cs" />
     <Compile Include="Base\SingleManagerBase.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Event\IEventDispatcher.cs" />
     <Compile Include="Interface\IComponent.cs" />
     <Compile Include="Manager\ArchiveManager.cs" />
+    <Compile Include="Manager\FrameUpdateManager.cs" />
     <Compile Include="Manager\IEffect.cs" />
     <Compile Include="Manager\IManagement.cs" />
     <Compile Include="Manager\IManager.cs" />
